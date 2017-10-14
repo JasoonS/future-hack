@@ -5,9 +5,9 @@ import RaisedButton from 'material-ui/RaisedButton'
 import DropDownMenu from 'material-ui/DropDownMenu'
 import MenuItem from 'material-ui/MenuItem'
 import SelectField from 'material-ui/SelectField'
-import PlacesAutocomplete from 'react-places-autocomplete'
+import GooglePlaceAutocomplete from 'material-ui-places'
 import AutoComplete from 'material-ui/AutoComplete'
-import { WithContext as ReactTags } from 'react-tag-input'
+import ChipInput from 'material-ui-chip-input'
 import {  } from '../actions'
 import { skillList, positionList } from '../constants'
 
@@ -17,15 +17,23 @@ class JobFinder extends Component {
 
     this.state = {
       address: '',
+      isSelected: false,
       skills: [],
       lookingFor: '',
       lookingForSet: false,
     }
   }
 
-  setAddress = (address) =>
+  setAddressSearch = (event, other) =>
     this.setState({
       ...this.state,
+      isSelected: false,
+      address: event.target.value,
+    })
+  setAddress = (fullInfo, address) =>
+    this.setState({
+      ...this.state,
+      isSelected: true,
       address,
     })
   setLookingFor = (event, lookingFor) =>
@@ -61,25 +69,11 @@ class JobFinder extends Component {
         this.setState({ skills });
     }
 
-    handleDrag = (tag, currPos, newPos) => {
-        let tags = this.state.tags;
-
-        // mutate array
-        tags.splice(currPos, 1);
-        tags.splice(newPos, 0, tag);
-
-        // re-render
-        this.setState({ tags: tags });
-    }
-
   render() {
     const {
-
-      skills
+      skills,
+      address
     } = this.state
-    const styles = {
-      width: 150,
-    }
     const inputProps = {
       value: this.state.address,
       onChange: this.setAddress
@@ -87,26 +81,34 @@ class JobFinder extends Component {
 
     return (
       <div>
-        <h2>Vehicle</h2>
         <h3>Tell us about yourself:</h3>
-        <h5>What are you looking for?</h5>
         <AutoComplete
           hintText='Start Typing...'
           dataSource={ positionList }
           onNewRequest={ console.log }
-          filter={AutoComplete.fuzzyFilter}
-          floatingLabelText='Your desired position'
+          filter={ AutoComplete.fuzzyFilter }
+          floatingLabelText='Your desired position. What kind of work are you looking for'
           fullWidth={true}
         />
         <br />
-        <h5>Arround which area are you looking for work?</h5>
-        <PlacesAutocomplete inputProps={inputProps} />
+        <GooglePlaceAutocomplete
+          hintText='Start Typing...'
+          floatingLabelText='Around which area are you looking for work?'
+          fullWidth={true}
+          searchText={address}
+          onChange={this.setAddressSearch}
+          onNewRequest={this.setAddress}
+          name={'location'}
+        />
         <br />
-        <ReactTags tags={skills}
-          suggestions={skillList}
-          handleDelete={this.handleDelete}
-          handleAddition={this.handleAddition}
-          handleDrag={this.handleDrag} />
+        <ChipInput
+          hintText='Start Typing...'
+          floatingLabelText='Please select skills you have to match your job selection.'
+          fullWidth={true}
+          dataSource={skillList}
+          onRequestDelete={this.handleDelete}
+          onRequestAdd={this.handleAddition}
+        />
         <br />
         <RaisedButton
           label='Enter'
