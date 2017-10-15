@@ -4,7 +4,6 @@ import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
-
 class Register extends Component {
     constructor(props) {
         super(props);
@@ -59,7 +58,9 @@ class Register extends Component {
             style = { style }
             onClick = {
                 (event) => this.handleClick(event) }
-            /> <
+            />
+            <a href='https://www.facebook.com/v2.10/dialog/oauth?client_id=1490935697626897&redirect_uri=http://localhost:3000/infoPull/' >Login with Facebook.</a>
+            <
             /div><
             /div>
         );

@@ -11,6 +11,8 @@ import withWidth, { LARGE, SMALL } from 'material-ui/utils/withWidth';
 import JobFinder from './containers/JobFinder'
 import JobResults from './containers/JobResults'
 import InfoPull from './containers/InfoPull'
+import Register from './containers/Register'
+import LoginTest from './containers/LoginTest'
 import Assessment from 'material-ui/svg-icons/action/assessment';
 import GridOn from 'material-ui/svg-icons/image/grid-on';
 import PermIdentity from 'material-ui/svg-icons/action/perm-identity';
@@ -62,17 +64,18 @@ class App extends Component {
                         { text: 'DashBoard', icon: <Assessment/>, link: '/dashboard' },
                         { text: 'Form Page', icon: <Web/>, link: '/form' },
                         { text: 'Table Page', icon: <GridOn/>, link: '/table' },
-                        { text: 'Login Page', icon: <PermIdentity/>, link: '/login' }
+                        { text: 'Login Page', icon: <PermIdentity/>, link: '/login' },
                       ]}
                       username="User Admin"/>
 
           <div style={styles.container}>
           <Router>
             <div className={'main-bounding-box'}>
-              <Route exact path='/' component={JobFinder}/>
+              <Route exact path='/' component={Register}/>
               <Route path='/jobFinder' component={JobFinder}/>
               <Route path='/infoPull' component={InfoPull}/>
               <Route path='/jobResults' component={JobResults}/>
+              <Route path='/test' component={LoginTest}/>
             </div>
           </Router>
         </div>

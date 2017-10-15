@@ -4,13 +4,13 @@ import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 
 class InfoPull extends Component {
+  switchPage = () => this.props.history.push('/foo')
   render() {
     return (
       <div>
         <h4>Report Vehicle Exit:</h4>
         <RaisedButton label='Enter your CV Details Manually' primary={true} fullWidth={true} onClick={console.log}/>
-        <a
-         href='https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=78uajvv7dsudha&redirect_uri=http://localhost:3000/signin-linkedin/&state=DCEeFWf45A53sdfKef424' >Pull data from LinkedIn.</a>
+        <a href='https://www.facebook.com/v2.10/dialog/oauth?client_id=1490935697626897&redirect_uri=http://localhost:3000/infoPull/' >Pull data from LinkedIn.</a>
       </div>
     )
   }
