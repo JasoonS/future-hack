@@ -68,7 +68,7 @@ class App extends Component {
 
           <div style={styles.container}>
           <Router>
-            <div>
+            <div className={'main-bounding-box'}>
               <Route exact path='/' component={JobFinder}/>
               <Route path='/jobFinder' component={JobFinder}/>
               <Route path='/infoPull' component={InfoPull}/>
