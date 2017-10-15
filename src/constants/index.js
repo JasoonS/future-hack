@@ -1,2 +1,2 @@
-export const skillList = ['matric', 'degree', 'react', 'mam', 'mater']
+export const skillList = ['matric', 'degree', 'react', 'mam', 'mater', 'PHD', 'Masters', 'Bachelors Degree']
 export const positionList = ['Web developer', 'Receptionist', 'Sales Rep', 'business analyst', 'Pilot', 'accountant', 'Receptionist', 'Human Resources', 'Charted Accounted', 'Security guard', 'Chief Executive Officer', 'BodyGuard']
