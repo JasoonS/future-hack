@@ -55,19 +55,23 @@ class JobFinder extends Component {
   }
 
   handleDelete = (i) => {
-        let skills = this.state.skills
-        skills.splice(i, 1)
-        this.setState({ ...this.state, skills })
-    }
+    let skills = this.state.skills
+    skills.splice(i, 1)
+    this.setState({ ...this.state, skills })
+  }
 
-    handleAddition = (tag) => {
-        let skills = this.state.skills
-        skills.push({
-            id: skills.length + 1,
-            text: tag
-        });
-        this.setState({ skills });
-    }
+  handleAddition = (tag) => {
+    let skills = this.state.skills
+    skills.push({
+      id: skills.length + 1,
+      text: tag
+    });
+    this.setState({ skills });
+  }
+
+  submit = (i) => {
+    
+  }
 
   render() {
     const {
@@ -85,7 +89,6 @@ class JobFinder extends Component {
         <AutoComplete
           hintText='Start Typing...'
           dataSource={ positionList }
-          onNewRequest={ console.log }
           filter={ AutoComplete.fuzzyFilter }
           floatingLabelText='Your desired position. What kind of work are you looking for'
           fullWidth={true}
@@ -114,7 +117,7 @@ class JobFinder extends Component {
           label='Enter'
           primary={true}
           fullWidth={true}
-          onClick={this.submitEntryDeposit}/>
+          onClick={this.submit}/>
       </div>
     )
   }

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-
+import ThemeDefault from './theme-default';
 import App from './App'
 import reducer from './reducers'
 import registerServiceWorker from './registerServiceWorker'
@@ -24,7 +24,7 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <MuiThemeProvider>
+    <MuiThemeProvider muiTheme={ThemeDefault}>
       <App/>
     </MuiThemeProvider>
   </Provider>,
